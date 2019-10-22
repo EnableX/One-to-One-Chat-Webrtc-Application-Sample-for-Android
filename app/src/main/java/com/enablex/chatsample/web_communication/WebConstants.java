@@ -3,7 +3,7 @@ package com.enablex.chatsample.web_communication;
 public class WebConstants
 {
 
-    public static final String kBaseURL = "URL";
+    public static final String kBaseURL = "Enter Your Server URL";
     public static final String userName = "USERNAME";
     public static final String password = "PASSWORD";
     public static final String getRoomId = "createRoom/";

@@ -1,5 +1,6 @@
 package com.enablex.chatsample.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import enx_rtc_android.Controller.EnxReconnectObserver;
 import enx_rtc_android.Controller.EnxRoom;
 import enx_rtc_android.Controller.EnxRoomObserver;
 import enx_rtc_android.Controller.EnxRtc;
@@ -30,7 +32,7 @@ import enx_rtc_android.Controller.EnxStreamObserver;
 
 
 public class ChatActivity extends AppCompatActivity
-        implements EnxRoomObserver, EnxStreamObserver, View.OnClickListener {
+        implements EnxRoomObserver, EnxStreamObserver, View.OnClickListener, EnxReconnectObserver {
     EnxRtc enxRtc;
     String token;
     String name;
@@ -42,6 +44,7 @@ public class ChatActivity extends AppCompatActivity
     RelativeLayout txtSendView;
     public ArrayList<MessageDetails> arrayListChat;
     ChatAdapter adapter;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class ChatActivity extends AppCompatActivity
         adapter = new ChatAdapter(this, arrayListChat);
         listChat.setLayoutManager(new LinearLayoutManager(this));
         listChat.setAdapter(adapter);
+        progressDialog = new ProgressDialog(this);
         enxRtc = new EnxRtc(this, this, this);
         localStream = enxRtc.joinRoom(token, getLocalStreamJsonObject(), getReconnectInfo(), null);
     }
@@ -129,21 +133,26 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onRoomConnected(EnxRoom enxRoom, JSONObject jsonObject) {
+        //received when user connected with Enablex room
         enxRooms = enxRoom;
+        enxRooms.setReconnectObserver(this);
     }
 
     @Override
     public void onRoomError(JSONObject jsonObject) {
+        //received when any error occurred while connecting to the Enablex room
         Toast.makeText(ChatActivity.this, jsonObject.optString("msg"), Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void onUserConnected(JSONObject jsonObject) {
+        // received when a new remote participant joins the call
     }
 
     @Override
     public void onUserDisConnected(JSONObject jsonObject) {
+        // received when a  remote participant left the call
         roomDisconnect();
     }
 
@@ -157,15 +166,17 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onPublishedStream(EnxStream enxStream) {
+    //received when audio video published successfully to the other remote users
     }
 
     @Override
     public void onUnPublishedStream(EnxStream enxStream) {
-
+    //received when audio video unpublished successfully to the other remote users
     }
 
     @Override
     public void onStreamAdded(EnxStream enxStream) {
+    //received when a new stream added
         if (enxStream != null) {
             enxRooms.subscribe(enxStream);
         }
@@ -173,43 +184,48 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onSubscribedStream(EnxStream enxStream) {
+    //received when a remote stream subscribed successfully
     }
 
     @Override
     public void onUnSubscribedStream(EnxStream enxStream) {
-
+    //received when a remote stream unsubscribed successfully
     }
 
     @Override
     public void onRoomDisConnected(JSONObject jsonObject) {
+    //received when Enablex room successfully disconnected
         this.finish();
     }
 
     @Override
     public void onActiveTalkerList(JSONObject jsonObject) {
+    //received when Active talker update happens
     }
 
     @Override
     public void onEventError(JSONObject jsonObject) {
+    //received when any error occurred for any room event
     }
 
     @Override
     public void onEventInfo(JSONObject jsonObject) {
-
+    // received for different events update
     }
 
     @Override
     public void onNotifyDeviceUpdate(String s) {
-
+    // received when when new media device changed
     }
 
     @Override
     public void onAcknowledgedSendData(JSONObject jsonObject) {
-
+    // received your chat data successfully sent to the other end
     }
 
     @Override
     public void onReceivedChatDataAtRoom(JSONObject jsonObject) {
+        // received when chat data received at room
         try {
             final String Id = jsonObject.getString("senderId");
             final String textMessage = jsonObject.getString("message");
@@ -239,44 +255,47 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onSwitchedUserRole(JSONObject jsonObject) {
-
+    // received when user switch their role (from moderator  to participant)
     }
 
     @Override
     public void onUserRoleChanged(JSONObject jsonObject) {
-
+    // received when user role changed successfully
     }
 
     @Override
     public void onAudioEvent(JSONObject jsonObject) {
+    //received when audio mute/unmute happens
     }
 
     @Override
     public void onVideoEvent(JSONObject jsonObject) {
+    //received when video mute/unmute happens
     }
 
     @Override
     public void onReceivedData(JSONObject jsonObject) {
+    //received when chat data received at room level
     }
 
     @Override
     public void onRemoteStreamAudioMute(JSONObject jsonObject) {
-
+    //received when any remote stream mute audio
     }
 
     @Override
     public void onRemoteStreamAudioUnMute(JSONObject jsonObject) {
-
+    //received when any remote stream unmute audio
     }
 
     @Override
     public void onRemoteStreamVideoMute(JSONObject jsonObject) {
-
+    //received when any remote stream mute video
     }
 
     @Override
     public void onRemoteStreamVideoUnMute(JSONObject jsonObject) {
-
+    //received when any remote stream unmute video
     }
 
     @Override
@@ -346,4 +365,27 @@ public class ChatActivity extends AppCompatActivity
         return sdf.format(date);
     }
 
+    @Override
+    public void onReconnect(String message) {
+        // received when room tries to reconnect due to low bandwidth or any connection interruption
+        try {
+            if (message.equalsIgnoreCase("Reconnecting")) {
+                progressDialog.setMessage("Wait, Reconnecting");
+                progressDialog.show();
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onUserReconnectSuccess(EnxRoom enxRoom, JSONObject jsonObject) {
+    // received when reconnect successfully completed
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+        Toast.makeText(this, "Reconnect Success", Toast.LENGTH_SHORT).show();
+    }
 }
