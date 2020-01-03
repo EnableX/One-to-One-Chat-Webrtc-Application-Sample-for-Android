@@ -224,7 +224,7 @@ public class ChatActivity extends AppCompatActivity
     }
 
     @Override
-    public void onReceivedChatDataAtRoom(JSONObject jsonObject) {
+    public void onMessageReceived(JSONObject jsonObject) {
         // received when chat data received at room
         try {
             final String Id = jsonObject.getString("senderId");
@@ -252,6 +252,12 @@ public class ChatActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onUserDataReceived(JSONObject jsonObject) {
+
+    }
+
 
     @Override
     public void onSwitchedUserRole(JSONObject jsonObject) {
