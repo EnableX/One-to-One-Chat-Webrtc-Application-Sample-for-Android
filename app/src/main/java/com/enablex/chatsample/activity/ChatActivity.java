@@ -16,6 +16,7 @@ import com.enablex.chatsample.R;
 import com.enablex.chatsample.adapter.ChatAdapter;
 import com.enablex.chatsample.model.MessageDetails;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -86,7 +87,7 @@ public class ChatActivity extends AppCompatActivity
         listChat.setAdapter(adapter);
         progressDialog = new ProgressDialog(this);
         enxRtc = new EnxRtc(this, this, this);
-        localStream = enxRtc.joinRoom(token, getLocalStreamJsonObject(), getReconnectInfo(), null);
+        localStream = enxRtc.joinRoom(token, getLocalStreamJsonObject(), getReconnectInfo(), new JSONArray());
     }
 
     private void setClickListener() {
@@ -107,16 +108,6 @@ public class ChatActivity extends AppCompatActivity
             jsonObject.put("audio", false);
             jsonObject.put("video", false);
             jsonObject.put("data", true);
-            jsonObject.put("maxVideoBW", 400);
-            jsonObject.put("minVideoBW", 300);
-            JSONObject videoSize = new JSONObject();
-            videoSize.put("minWidth", 720);
-            videoSize.put("minHeight", 480);
-            videoSize.put("maxWidth", 1280);
-            videoSize.put("maxHeight", 720);
-            jsonObject.put("videoSize", videoSize);
-            jsonObject.put("audioMuted", false);
-            jsonObject.put("videoMuted", false);
             jsonObject.put("name", name);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -176,10 +167,7 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onStreamAdded(EnxStream enxStream) {
-    //received when a new stream added
-        if (enxStream != null) {
-            enxRooms.subscribe(enxStream);
-        }
+     //received when a new stream added
     }
 
     @Override
