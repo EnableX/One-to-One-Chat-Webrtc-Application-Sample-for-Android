@@ -2,8 +2,10 @@ package com.enablex.chatsample.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 new WebCall(this, this, null, WebConstants.getRoomId, WebConstants.getRoomIdCode, false, true).execute();
                 break;
             case R.id.joinRoom:
-                room_Id=roomId.getText().toString();
+                room_Id = roomId.getText().toString();
                 if (validations()) {
                     validateRoomIDWebCall();
                 }
@@ -112,7 +114,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void onGetRoomIdSuccess(String response) {
-        Log.e("onGetRoomIdSuccess",response);
+        Log.e("onGetRoomIdSuccess", response);
         try {
             JSONObject jsonObject = new JSONObject(response);
             room_Id = jsonObject.optJSONObject("room").optString("room_id");

@@ -1,8 +1,10 @@
 package com.enablex.chatsample.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +55,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         return list.size();
     }
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder{
+    public class ChatViewHolder extends RecyclerView.ViewHolder {
         TextView txtSenderName;
         TextView txtBodyReceived;
         TextView txtTimeReceived;
@@ -62,6 +64,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         TextView txtMe;
         TextView txtBodySend;
         TextView txtTimeSent;
+
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             txtSenderName = (TextView) itemView.findViewById(R.id.txt_From);
@@ -73,7 +76,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             txtTimeSent = (TextView) itemView.findViewById(R.id.txt_time_me);
 
             LL_Send = (LinearLayout) itemView.findViewById(R.id.LL_Send);
-            LL_receive = (LinearLayout)itemView. findViewById(R.id.LL_receive);
+            LL_receive = (LinearLayout) itemView.findViewById(R.id.LL_receive);
         }
     }
 }

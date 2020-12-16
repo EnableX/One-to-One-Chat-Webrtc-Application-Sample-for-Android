@@ -2,10 +2,12 @@ package com.enablex.chatsample.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -157,58 +159,54 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onPublishedStream(EnxStream enxStream) {
-    //received when audio video published successfully to the other remote users
+        //received when audio video published successfully to the other remote users
     }
 
     @Override
     public void onUnPublishedStream(EnxStream enxStream) {
-    //received when audio video unpublished successfully to the other remote users
+        //received when audio video unpublished successfully to the other remote users
     }
 
     @Override
     public void onStreamAdded(EnxStream enxStream) {
-     //received when a new stream added
+        //received when a new stream added
     }
 
     @Override
     public void onSubscribedStream(EnxStream enxStream) {
-    //received when a remote stream subscribed successfully
+        //received when a remote stream subscribed successfully
     }
 
     @Override
     public void onUnSubscribedStream(EnxStream enxStream) {
-    //received when a remote stream unsubscribed successfully
+        //received when a remote stream unsubscribed successfully
     }
 
     @Override
     public void onRoomDisConnected(JSONObject jsonObject) {
-    //received when Enablex room successfully disconnected
+        //received when Enablex room successfully disconnected
         this.finish();
     }
 
-    @Override
-    public void onActiveTalkerList(JSONObject jsonObject) {
-    //received when Active talker update happens
-    }
 
     @Override
     public void onEventError(JSONObject jsonObject) {
-    //received when any error occurred for any room event
+        //received when any error occurred for any room event
     }
 
     @Override
     public void onEventInfo(JSONObject jsonObject) {
-    // received for different events update
+        // received for different events update
     }
 
     @Override
     public void onNotifyDeviceUpdate(String s) {
-    // received when when new media device changed
+        // received when when new media device changed
     }
 
     @Override
     public void onAcknowledgedSendData(JSONObject jsonObject) {
-    // received your chat data successfully sent to the other end
+        // received your chat data successfully sent to the other end
     }
 
     @Override
@@ -249,12 +247,12 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onSwitchedUserRole(JSONObject jsonObject) {
-    // received when user switch their role (from moderator  to participant)
+        // received when user switch their role (from moderator  to participant)
     }
 
     @Override
     public void onUserRoleChanged(JSONObject jsonObject) {
-    // received when user role changed successfully
+        // received when user role changed successfully
     }
 
     @Override
@@ -279,37 +277,52 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onAudioEvent(JSONObject jsonObject) {
-    //received when audio mute/unmute happens
+        //received when audio mute/unmute happens
     }
 
     @Override
     public void onVideoEvent(JSONObject jsonObject) {
-    //received when video mute/unmute happens
+        //received when video mute/unmute happens
     }
 
     @Override
     public void onReceivedData(JSONObject jsonObject) {
-    //received when chat data received at room level
+        //received when chat data received at room level
     }
 
     @Override
     public void onRemoteStreamAudioMute(JSONObject jsonObject) {
-    //received when any remote stream mute audio
+        //received when any remote stream mute audio
     }
 
     @Override
     public void onRemoteStreamAudioUnMute(JSONObject jsonObject) {
-    //received when any remote stream unmute audio
+        //received when any remote stream unmute audio
     }
 
     @Override
     public void onRemoteStreamVideoMute(JSONObject jsonObject) {
-    //received when any remote stream mute video
+        //received when any remote stream mute video
     }
 
     @Override
     public void onRemoteStreamVideoUnMute(JSONObject jsonObject) {
-    //received when any remote stream unmute video
+        //received when any remote stream unmute video
+    }
+
+    @Override
+    public void onAckPinUsers(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onAckUnpinUsers(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onPinnedUsers(JSONObject jsonObject) {
+
     }
 
     @Override
@@ -396,7 +409,7 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onUserReconnectSuccess(EnxRoom enxRoom, JSONObject jsonObject) {
-    // received when reconnect successfully completed
+        // received when reconnect successfully completed
         if (progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
