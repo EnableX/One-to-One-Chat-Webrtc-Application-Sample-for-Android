@@ -244,6 +244,11 @@ public class ChatActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public void onUserStartTyping(boolean b) {
+
+    }
+
 
     @Override
     public void onSwitchedUserRole(JSONObject jsonObject) {
@@ -362,6 +367,26 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onRoomBandwidthAlert(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onStopAllSharingACK(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onACKStartLiveTranscription(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onACKStopLiveTranscription(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onTranscriptionEvents(JSONObject jsonObject) {
 
     }
 
