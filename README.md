@@ -1,11 +1,12 @@
-# 1-to-1 RTC: A Sample Chat App with EnableX Android Toolkit
+# 1-to-1 RTC: A Chat App with EnableX Android Toolkit
 
-This is a Sample Chat Application that demonstrates the use of EnableX platform Server APIs (https://www.enablex.io/developer/video-api/server-api) and Android Toolkit (https://www.enablex.io/developer/video-api/client-api/android-toolkit) to build 1-to-1 Chat Application.  It allows developers to ramp up on app development by hosting on their own devices.
+1-to-1 RTC: A Sample Chat App with EnableX Android Toolkit
 
-This App creates a virtual Room on the fly  hosted on the Enablex platform using REST calls and uses the Room credentials (i.e. Room Id) to connect to the virtual Room as a mobile client.  The same Room credentials can be shared with others to join the same virtual Room to carry out an RTC session.
+This is a Sample Chat Application that demonstrates the use of EnableX platform Video APIs (https://www.enablex.io/developer/video-api/server-api) and Android Toolkit (https://www.enablex.io/developer/video-api/client-api/android-toolkit) to build 1-to-1 Chat Application. It allows developers to ramp up on app development by hosting on their own devices.
+
+This App creates a virtual Room on the fly hosted on the Enablex platform using REST calls and uses the Room credentials (i.e. Room Id) to connect to the virtual Room as a mobile client. The same Room credentials can be shared with others to join the same virtual Room to carry out an RTC session. 
 
 > EnableX Developer Center: https://developer.enablex.io/
-
 
 ## 1. How to get started
 
