@@ -2,7 +2,7 @@
 
 1-to-1 RTC: A Sample Chat App with EnableX Android Toolkit
 
-This is a Sample Chat Application that demonstrates the use of EnableX platform Video APIs (https://www.enablex.io/developer/video-api/server-api) and Android Toolkit (https://www.enablex.io/developer/video-api/client-api/android-toolkit) to build 1-to-1 Chat Application. It allows developers to ramp up on app development by hosting on their own devices.
+This is a Sample Chat Application that demonstrates the use of EnableX platform Video APIs (https://developer.enablex.io/docs/references/apis/video-api/index/) and Android Toolkit (https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/) to build 1-to-1 Chat Application. It allows developers to ramp up on app development by hosting on their own devices.
 
 This App creates a virtual Room on the fly hosted on the Enablex platform using REST calls and uses the Room credentials (i.e. Room Id) to connect to the virtual Room as a mobile client. The same Room credentials can be shared with others to join the same virtual Room to carry out an RTC session. 
 
@@ -82,15 +82,15 @@ Note the following:
 * Application Server is created using EnableX Server API, a Rest API Service helps in provisioning, session access and post-session reporting.  
 
 To know more about Server API, go to:
-https://developer.enablex.io/latest/server-api/
+https://developer.enablex.io/docs/references/apis/video-api/index/
 
 
 ## 3. Android Toolkit
 
 This Sample Applcation uses EnableX Android Toolkit to communicate with EnableX Servers to initiate and manage Real Time Communications. Please update your Application with latest version of EnableX Android Toolkit as and when a new release is avaialble.
 
-* Documentation: https://www.enablex.io/developer/video-api/client-api/android-toolkit/
-* Download Toolkit: https://www.enablex.io/developer/video-api/client-api/android-toolkit/
+* Documentation: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
+* Download Toolkit: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
 
 
 ## 4. Application Walk-through
@@ -100,13 +100,13 @@ This Sample Applcation uses EnableX Android Toolkit to communicate with EnableX 
 We create a Token for a Room Id to get connected to EnableX Platform to connect to the Virtual Room to carry out an RTC Session.
 
 To create Token, we make use of Server API. Refer following documentation:
-https://www.enablex.io/developer/video-api/server-api/rooms-route/#create-token
+https://developer.enablex.io/docs/references/apis/video-api/content/api-routes/#create-a-token
 
 
 ### 4.2 Connect to a Room, Initiate & Publish the Stream
 
 We use the Token to get connected to the Virtual Room. Once connected, we intiate local stream and publish into the room. Refer following documentation for this process:
-https://www.enablex.io/developer/video-api/client-api/android-toolkit/publishing-local-stream/
+https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/stream-configuration/content/handle-local-stream/#publish-a-local-stream
 
 
 
@@ -118,7 +118,7 @@ Use the below method to send the chat messages using EnxRoom Object.
 enxRoom.sendMessage(message, true, null);
 
   ```
-More on EnxRoom: https://www.enablex.io/developer/video-api/client-api/android-toolkit/enxroom/
+More on EnxRoom: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
 
 ### 4.4 Handle Server Events
 
