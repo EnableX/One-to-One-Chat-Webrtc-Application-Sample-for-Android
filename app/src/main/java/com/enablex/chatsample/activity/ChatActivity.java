@@ -240,25 +240,40 @@ public class ChatActivity extends AppCompatActivity
     }
 
     @Override
+    public void onACKSendMessage(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onMessageDelete(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onACKDeleteMessage(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onMessageUpdate(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onACKUpdateMessage(JSONObject jsonObject) {
+
+    }
+
+    @Override
     public void onUserDataReceived(JSONObject jsonObject) {
 
     }
 
     @Override
-    public void onUserStartTyping(boolean b) {
+    public void onUserStartTyping(JSONObject jsonObject) {
 
     }
 
-
-    @Override
-    public void onSwitchedUserRole(JSONObject jsonObject) {
-        // received when user switch their role (from moderator  to participant)
-    }
-
-    @Override
-    public void onUserRoleChanged(JSONObject jsonObject) {
-        // received when user role changed successfully
-    }
 
     @Override
     public void onConferencessExtended(JSONObject jsonObject) {
@@ -378,8 +393,7 @@ public class ChatActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_send:
+            if(view.getId()== R.id.btn_send){
 
                 if (txt_msgToSend.getText().toString().length() != 0) {
                     MessageDetails messageDetails = getMessageOBJ(txt_msgToSend.getText().toString().trim());
@@ -391,7 +405,7 @@ public class ChatActivity extends AppCompatActivity
                 }
                 txt_msgToSend.performClick();
                 txt_msgToSend.requestFocus();
-                break;
+
         }
     }
 

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/One-to-One-Chat-Webrtc-Application-Sample-for-Android.iml" filepath="$PROJECT_DIR$/One-to-One-Chat-Webrtc-Application-Sample-for-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/One-to-One-Chat-Webrtc-Application-Sample-for-Android.app.main.iml" />

@@ -39,16 +39,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.createRoom:
+        int id=view.getId();
+
+            if(id== R.id.createRoom) {
                 new WebCall(this, this, null, WebConstants.getRoomId, WebConstants.getRoomIdCode, false, true).execute();
-                break;
-            case R.id.joinRoom:
+            }
+            else if(id== R.id.joinRoom){
                 room_Id = roomId.getText().toString();
                 if (validations()) {
                     validateRoomIDWebCall();
                 }
-                break;
         }
     }
 
